@@ -1,9 +1,11 @@
-import React from 'react'
+import styles from './Header.module.scss';
 
- function Header() {
+function Header() {
   return (
-    <div>Header</div>
-  )
+    <header className={styles['wrapper']}>
+      <div className={styles['inner']}></div>
+    </header>
+  );
 }
 
 export default Header;
