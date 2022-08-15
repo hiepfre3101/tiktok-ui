@@ -2,10 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root{
-   --primary:#fe2c55;
+   --primary-color:#fe2c55;
    //Default Layout
     --default-layout-width:1150px;
     --default-layout-height:60px;
+    --black:#000;
+    --text-color:#333;
 }
 *{
   margin: 0;
@@ -21,4 +23,14 @@ body{
     font-size:  1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+}
+
+button,input, [tabindex]{
+   outline: none;
+   border: none;
+}
+
+a{
+  color: (--text-color);
+  text-decoration: none;
 }
