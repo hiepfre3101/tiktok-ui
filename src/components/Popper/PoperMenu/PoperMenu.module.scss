@@ -1,0 +1,22 @@
+.content{
+    width: 224px;
+     .menu-item{
+        text-decoration: none;
+        display: flex;
+       margin-left: 0;
+       color: var(--black);
+       font-weight: 400;
+   }  
+}
+
+.menu-poper{
+    padding-bottom: 8px;
+}
+//Menu item
+.menu-item{
+    width: 100%;
+    justify-content: flex-start;
+    &:hover{
+        background-color: rgba(22,24,35,0.03);
+    }
+}

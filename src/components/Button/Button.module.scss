@@ -13,6 +13,10 @@
     + .wrapper{
         margin-left: 8px;
     }
+      &  a{
+        text-decoration: none;
+        color: var(--black);
+    }
 }
 //Buttom sizes
 .small{
@@ -57,4 +61,14 @@
     &:hover{
        background-color:  rgba(22, 24, 35, 0.03);
     }
+}
+//Button children
+
+.title{
+    margin-left: 8px;
+}
+.icon{
+    display: inline-block;
+    width: 24px;
+    text-align: center;
 }
