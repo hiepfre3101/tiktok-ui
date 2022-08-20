@@ -9,8 +9,15 @@ import {
   faEarthAsia,
   faCircleQuestion,
   faKeyboard,
+  faCloudDownload,
+  faUser,
+  faCoins,
+  faGear,
+  faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react/headless';
+import HeadlessTippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 import { useState, useEffect } from 'react';
 
 import { Wrapper as PopperWrapper } from '~/components/Popper';
@@ -18,6 +25,7 @@ import image from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import PoperMenu from '~/components/Popper/PoperMenu';
+import { faSoundcloud } from '@fortawesome/free-brands-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -25,19 +33,19 @@ const POPERMENU_ITEMS = [
   {
     icon: <FontAwesomeIcon icon={faEarthAsia} />,
     title: 'English',
-    children:{
-      title:"Languague",
-      data:[
+    children: {
+      title: 'Languague',
+      data: [
         {
-          code:"vi",
-          title:"Tieng Viet"
+          code: 'vi',
+          title: 'Tieng Viet',
         },
         {
-          code:"en",
-          title:"English"
+          code: 'en',
+          title: 'English',
         },
       ],
-    }
+    },
   },
   {
     icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -52,17 +60,44 @@ const POPERMENU_ITEMS = [
 
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
-
+  const currentUser = true;
+  
   useEffect(() => {
     setInterval(() => {
       setSearchResult([]);
     }, 0);
   }, []);
+
+   const userMenu = [
+    {
+        icon:<FontAwesomeIcon  icon={faUser}/>,
+         title:"View profile",
+         to:"/@hiep"
+    },
+    {
+        icon:<FontAwesomeIcon  icon={faCoins}/>,
+         title:"Get coin",
+         to:"/coin"
+    },
+    {
+        icon:<FontAwesomeIcon  icon={faGear}/>,
+         title:"Setting",
+         to:"/setting"
+    },
+     ...POPERMENU_ITEMS,
+     {
+      icon:<FontAwesomeIcon  icon={faSignOut}/>,
+         title:"Log out",
+         to:"/logout",
+         separate:true
+     }
+   ]
+
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
         <img src={image.logo} alt="Tiktok" />
-        <Tippy
+        <HeadlessTippy
           visible={searchResult.length > 0}
           interactive
           render={(attrs) => (
@@ -87,14 +122,32 @@ function Header() {
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
           </div>
-        </Tippy>
+        </HeadlessTippy>
         <div className={cx('actions')}>
-          <Button text>Upload</Button>
-          <Button primary>Log in</Button>
-          <PoperMenu items={POPERMENU_ITEMS}>
+          {currentUser ? (
+            <>
+               <Button text>Upload</Button>
+            <Tippy  content="Upload video" placement='bottom'>
+                <button className={cx('action-btn')}>
+                <FontAwesomeIcon icon={faCloudDownload} />
+              </button>
+            </Tippy>
+            </>
+          ) : (
+            <>
+              <Button text>Upload</Button>
+              <Button primary>Log in</Button>
+            </>
+          )}
+          <PoperMenu items={currentUser ? userMenu : POPERMENU_ITEMS}>
+          {currentUser ? (
+              <img src="https://picsum.photos/40/40" alt="User"  className={cx('user-avatar')}/>
+          ) : (
             <button className={cx('more-btn')}>
               <FontAwesomeIcon icon={faEllipsisVertical} />
             </button>
+          )}
+            
           </PoperMenu>
         </div>
       </div>

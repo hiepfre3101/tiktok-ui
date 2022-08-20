@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-const PoperMenu = ({ children, items = [] }) => {
+function PoperMenu({ children, items = [] }) {
   const [history, setHistory] = useState([{ data: items }]);
   const currentMenu = history[history.length - 1];
 
@@ -31,6 +31,7 @@ const PoperMenu = ({ children, items = [] }) => {
   };
   return (
     <Tippy
+      offset={[10,10]}
       delay={[0, 700]}
       interactive
       placement="bottom-end"
@@ -46,6 +47,7 @@ const PoperMenu = ({ children, items = [] }) => {
           </PopperWrapper>
         </div>
       )}
+      onHide={()=>setHistory(prev=> prev.slice(0,1))}
     >
       {children}
     </Tippy>

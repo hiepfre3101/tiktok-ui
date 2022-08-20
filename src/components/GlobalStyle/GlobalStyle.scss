@@ -7,7 +7,7 @@
     --default-layout-width:1150px;
     --default-layout-height:60px;
     --black:#000;
-    --text-color:#333;
+    --text-color:#161823;
     --default-layout-horizontal-spac:24px;
 }
 *{
@@ -35,3 +35,21 @@ a{
   color: (--text-color);
   text-decoration: none;
 }
+//Custom tooltip
+body 
+{
+  .tippy-box{
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 2.2rem;
+   background-color: rgba(84,84,84,0.92);
+  }
+  .tippy-arrow{
+    color:rgba(84,84,84,0.92) ;
+  }
+  .tippy-content{
+    padding: 8px 9px;
+  }
+}
+  
