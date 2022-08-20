@@ -5,9 +5,9 @@ import styles from './PoperMenu.module.scss';
 import Button from "~/components/Button";
 
 const cx = classNames.bind(styles);
- const PoperMenuItem = ({data}) => {
+ const PoperMenuItem = ({data, onClick}) => {
   return (
-      <Button leftIcon={data.icon} to={data.to} className={cx('menu-item')} >
+      <Button leftIcon={data.icon} to={data.to} className={cx('menu-item')} onClick={onClick}>
         {data.title}
       </Button>
   )
