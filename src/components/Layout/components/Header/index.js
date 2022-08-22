@@ -9,7 +9,6 @@ import {
   faEarthAsia,
   faCircleQuestion,
   faKeyboard,
-  faCloudDownload,
   faUser,
   faCoins,
   faGear,
@@ -25,7 +24,8 @@ import image from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import PoperMenu from '~/components/Popper/PoperMenu';
-import { faSoundcloud } from '@fortawesome/free-brands-svg-icons';
+import { MessageIcon, UploadIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -61,7 +61,9 @@ const POPERMENU_ITEMS = [
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
   const currentUser = true;
-  
+  const iconCustom  = {
+    iconSvg : <UploadIcon />
+  } 
   useEffect(() => {
     setInterval(() => {
       setSearchResult([]);
@@ -126,22 +128,22 @@ function Header() {
         <div className={cx('actions')}>
           {currentUser ? (
             <>
-               <Button text>Upload</Button>
-            <Tippy  content="Upload video" placement='bottom'>
+               <Button text leftIcon={iconCustom.iconSvg}>Upload</Button>
+            <Tippy  content="Messages" placement='bottom'>
                 <button className={cx('action-btn')}>
-                <FontAwesomeIcon icon={faCloudDownload} />
+                <MessageIcon />
               </button>
             </Tippy>
             </>
           ) : (
             <>
-              <Button text>Upload</Button>
+              <Button text  leftIcon={iconCustom.iconSvg}>Upload</Button>
               <Button primary>Log in</Button>
             </>
           )}
           <PoperMenu items={currentUser ? userMenu : POPERMENU_ITEMS}>
           {currentUser ? (
-              <img src="https://picsum.photos/40/40" alt="User"  className={cx('user-avatar')}/>
+              <Image   src="https://picsum.photos/40/40" alt="User"  className={cx('user-avatar')}/>
           ) : (
             <button className={cx('more-btn')}>
               <FontAwesomeIcon icon={faEllipsisVertical} />
