@@ -16,7 +16,7 @@ import 'tippy.js/dist/tippy.css';
 import image from '~/assets/images';
 import Button from '~/components/Button';
 import PoperMenu from '~/components/Popper/PoperMenu';
-import { MessageIcon, UploadIcon } from '~/components/Icons';
+import { InboxIcon, MessageIcon, UploadIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import Search from '../Search';
 
@@ -94,14 +94,20 @@ function Header() {
                <Button text leftIcon={iconCustom.iconSvg}>Upload</Button>
             <Tippy  content="Messages" placement='bottom'>
                 <button className={cx('action-btn')}>
-                <MessageIcon />
-              </button>
+                   <MessageIcon />
+                </button>
+            </Tippy> 
+            <Tippy content="Inbox" placement='bottom'>
+              <button className={cx('action-btn')}>
+                    <InboxIcon /> 
+                </button>
             </Tippy>
+              
             </>
           ) : (
             <>
               <Button text  leftIcon={iconCustom.iconSvg}>Upload</Button>
-              <Button primary>Log in</Button>
+              <Button primary >Log in</Button>
             </>
           )}
           <PoperMenu items={currentUser ? userMenu : POPERMENU_ITEMS}>

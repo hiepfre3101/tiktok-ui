@@ -1,4 +1,7 @@
 .wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-size: 1.6rem;
     font-weight: 700;
     font-family: 'ProximaNova', sans-serif;
@@ -33,7 +36,7 @@
 .primary{
     background-color: var(--primary-color);
     color: white;
-
+    justify-content: center;
     &:hover{
        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)),#FE2C55;
     }
@@ -50,6 +53,7 @@
 
 .text{
     border: 1px solid rgba(22, 24, 35, 0.12);
+    border-radius: 0px;
     &:hover{
         text-decoration: underline;
        background-color:  rgba(22, 24, 35, 0.03);
@@ -67,9 +71,10 @@
 
 .title{
     margin-left: 8px;
+    display: inline-block;
+    font-weight: 600;
 }
 .icon{
+    height: 2rem;
     display: inline-block;
-    width: 24px;
-    text-align: center;
 }

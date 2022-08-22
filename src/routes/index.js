@@ -5,27 +5,25 @@ import Upload from '~/pages/Upload';
 import { HeaderOnly } from '~/components/Layout';
 
 //Public Routes
-const publicRoutes =[
-    {
-        path:'/',
-        component:Home
-    },
-    {
-        path:'/following',
-        component:Following
-    },
-    {
-        path:'/profile',
-        component:Profile
-    },
-    {
-        path:'/upload',
-        component:Upload,
-        layout:HeaderOnly
-    },
+const publicRoutes = [
+  {
+    path: '/',
+    component: Home,
+  },
+  {
+    path: '/following',
+    component: Following,
+  },
+  {
+    path: '/@:nickname',
+    component: Profile,
+  },
+  {
+    path: '/upload',
+    component: Upload,
+    layout: HeaderOnly,
+  },
 ];
-const privateRoutes =[
-  
-];
+const privateRoutes = [];
 
-export {publicRoutes,privateRoutes};
+export { publicRoutes, privateRoutes };

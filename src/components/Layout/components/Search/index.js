@@ -1,6 +1,6 @@
 import HeadlessTippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
-import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark,faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import AccountItem from '~/components/AccountItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect, useRef } from 'react';
@@ -13,12 +13,25 @@ function Search() {
   const [searchValue, setSearchValue] = useState('');
   const [searchResult, setSearchResult] = useState([]);
   const [showResult, setShowResult] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const inputRef = useRef();
-
   useEffect(() => {
-    setTimeout(setSearchResult([1, 2]),0);
-  }, []);
+    if (!searchValue.trim()) {
+      setSearchResult([])
+      return;
+    }
+    setLoading(true);
+    fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q= ${encodeURIComponent(searchValue)}&type=less`)
+      .then((res) => res.json())
+      .then((res) => {
+        setSearchResult(res.data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  }, [searchValue]);
 
   const handleHideResult = () => {
     setShowResult(false);
@@ -27,14 +40,14 @@ function Search() {
     <HeadlessTippy
       visible={showResult && searchResult.length > 0}
       interactive
-    onClickOutside={handleHideResult}
+      onClickOutside={handleHideResult}
       render={(attrs) => (
         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
           <PopperWrapper>
             <h4 className={cx('search-label')}>Accounts</h4>
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
+            {searchResult.map((result) => (
+              <AccountItem key={result.id} data={result} />
+            ))}
           </PopperWrapper>
         </div>
       )}
@@ -47,9 +60,9 @@ function Search() {
           placeholder="Search accounts and videos"
           spellCheck={false}
           onChange={(e) => setSearchValue(e.target.value)}
-          onFocus={()=>setShowResult(true)}
+          onFocus={() => setShowResult(true)}
         />
-        {!!searchValue && (
+        {!!searchValue && !loading && (
           <button
             className={cx('clear')}
             onClick={(e) => {
@@ -61,7 +74,7 @@ function Search() {
             <FontAwesomeIcon icon={faCircleXmark} />
           </button>
         )}
-        {/* <FontAwesomeIcon icon={faSpinner} className={cx('loading')} /> */}
+        {loading && <FontAwesomeIcon icon={faSpinner} className={cx('loading')} />} 
 
         <button className={cx('search-btn')}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
