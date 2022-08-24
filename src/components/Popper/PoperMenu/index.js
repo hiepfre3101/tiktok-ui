@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-function PoperMenu({ children, items = [] }) {
+function PoperMenu({ children, items = [] , hideOnClick=false }) {
   const [history, setHistory] = useState([{ data: items }]);
   const currentMenu = history[history.length - 1];
 
@@ -34,6 +34,7 @@ function PoperMenu({ children, items = [] }) {
       offset={[10,10]}
       delay={[0, 700]}
       interactive
+      hideOnClick={hideOnClick}
       placement="bottom-end"
       render={(attrs) => (
         <div className={cx('content')} tabIndex="-1" {...attrs}>
