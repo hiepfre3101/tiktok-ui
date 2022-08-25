@@ -7,7 +7,7 @@
     --default-layout-height:60px;
     --black:#000;
     --text-color:#161823;
-    --default-layout-horizontal-spac:24px;
+    --default-layout-horizontal-space:24px;
     --font-family:'ProximaNova', sans-serif;
 }
 *{
@@ -24,8 +24,34 @@ body{
     font-size:  1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+    overflow-y: overlay;
+
+}
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .15);
+}
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .15);
+}
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
 }
 
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
 button,input, [tabindex]{
    outline: none;
    border: none;

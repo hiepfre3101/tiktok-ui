@@ -1,5 +1,3 @@
-
-
 const routes = {
     home:"/",
     following:"/following", 
