@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './PoperMenu.module.scss';
-
+import PropTypes from 'prop-types'
 
 import Button from "~/components/Button";
 
@@ -14,5 +14,10 @@ const cx = classNames.bind(styles);
         {data.title}
       </Button>
   )
+}
+
+PoperMenuItem.propTypes = {
+   data:PropTypes.object.isRequired,
+   onClick : PropTypes.func,
 }
 export default PoperMenuItem;

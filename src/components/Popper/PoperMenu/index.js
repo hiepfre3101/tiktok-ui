@@ -1,6 +1,7 @@
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import styles from './PoperMenu.module.scss';
+import PropTypes from 'prop-types';
 
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import PoperMenuItem from './PoperMenuItem';
@@ -8,8 +9,10 @@ import Header from './Header';
 import { useState } from 'react';
 
 const cx = classNames.bind(styles);
+const defaultFunc = ()=>{};
 
-function PoperMenu({ children, items = [] , hideOnClick=false }) {
+
+function PoperMenu({ children, items = [] , hideOnClick=false }, onChange=defaultFunc) {
   const [history, setHistory] = useState([{ data: items }]);
   const currentMenu = history[history.length - 1];
 
@@ -23,6 +26,8 @@ function PoperMenu({ children, items = [] , hideOnClick=false }) {
           onClick={() => {
             if (isParent) {
               setHistory((prev) => [...prev, item.children]);
+            }else{
+              onChange(item);
             }
           }}
         />
@@ -40,7 +45,7 @@ function PoperMenu({ children, items = [] , hideOnClick=false }) {
         <div className={cx('content')} tabIndex="-1" {...attrs}>
           <PopperWrapper className={cx('menu-poper')}>
             {history.length > 1 && <Header 
-                                      title={'Language'} 
+                                      title={currentMenu.title} 
                                       onBack={() => {
                                         setHistory((prev)=> prev.slice(0,prev.length-1));
                                       }} />}
@@ -57,4 +62,10 @@ function PoperMenu({ children, items = [] , hideOnClick=false }) {
     </Tippy>
   );
 };
+PoperMenu.propTypes = {
+  children:PropTypes.node.isRequired,
+  items:PropTypes.array,
+  hideOnClick:PropTypes.bool,
+  onChange:PropTypes.func,
+}
 export default PoperMenu;

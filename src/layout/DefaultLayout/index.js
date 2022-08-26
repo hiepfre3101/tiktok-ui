@@ -2,6 +2,8 @@ import Header from '~/layout/components/Header';
 import Sidebar from './Sidebar';
 import styles from './DefaultLayout.module.scss';
 
+import PropTypes from 'prop-types'
+
 function DefaultLayout({ children }) {
   return (
     <div className={styles['wrapper']}>
@@ -13,5 +15,7 @@ function DefaultLayout({ children }) {
     </div>
   );
 }
-
+DefaultLayout.propTypes = {
+  children:PropTypes.node.isRequired,
+}
 export default DefaultLayout;

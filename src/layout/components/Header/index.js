@@ -33,11 +33,11 @@ const POPERMENU_ITEMS = [
     children: {
       title: 'Languague',
       data: [
-        {
+        { type:"language",
           code: 'vi',
           title: 'Tieng Viet',
         },
-        {
+        { type:"language",
           code: 'en',
           title: 'English',
         },
@@ -84,6 +84,15 @@ function Header() {
          separate:true
      }
    ]
+ 
+    const handleMenuChange = (menuItem) =>{
+      switch (menuItem.type) {
+        case 'language':
+           //do somethings with case
+          break;
+        default:
+      }
+    }
 
   return (
     <header className={cx('wrapper')}>
@@ -114,7 +123,7 @@ function Header() {
               <Button primary >Log in</Button>
             </>
           )}
-          <PoperMenu items={currentUser ? userMenu : POPERMENU_ITEMS}>
+          <PoperMenu items={currentUser ? userMenu : POPERMENU_ITEMS} onChange={handleMenuChange}>
           {currentUser ? (
               <Image   src="https://picsum.photos/40/40" alt="User"  className={cx('user-avatar')}/>
           ) : (
