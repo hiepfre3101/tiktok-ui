@@ -1,4 +1,4 @@
-import './GlobalStyle.scss';
+import './GlobalStyle.module.scss';
 import PropTypes from 'prop-types';
 import React from 'react';
 

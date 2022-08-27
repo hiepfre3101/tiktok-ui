@@ -120,7 +120,7 @@ function Header() {
           ) : (
             <>
               <Button text  leftIcon={iconCustom.iconSvg}>Upload</Button>
-              <Button primary >Log in</Button>
+              <Button primary>Log in</Button>
             </>
           )}
           <PoperMenu items={currentUser ? userMenu : POPERMENU_ITEMS} onChange={handleMenuChange}>

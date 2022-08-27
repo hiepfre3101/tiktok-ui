@@ -9,10 +9,9 @@ import Header from './Header';
 import { useState } from 'react';
 
 const cx = classNames.bind(styles);
-const defaultFunc = ()=>{};
+const defaultFunc = () => {};
 
-
-function PoperMenu({ children, items = [] , hideOnClick=false }, onChange=defaultFunc) {
+function PoperMenu({ children, items = [], hideOnClick = false }, onChange = defaultFunc) {
   const [history, setHistory] = useState([{ data: items }]);
   const currentMenu = history[history.length - 1];
 
@@ -26,7 +25,7 @@ function PoperMenu({ children, items = [] , hideOnClick=false }, onChange=defaul
           onClick={() => {
             if (isParent) {
               setHistory((prev) => [...prev, item.children]);
-            }else{
+            } else {
               onChange(item);
             }
           }}
@@ -34,9 +33,17 @@ function PoperMenu({ children, items = [] , hideOnClick=false }, onChange=defaul
       );
     });
   };
+
+  const handleBack = () => {
+    setHistory((prev) => prev.slice(0, prev.length - 1));
+  };
+
+  const handleReset = () => {
+    setHistory((prev) => prev.slice(0, 1));
+  };
   return (
     <Tippy
-      offset={[10,10]}
+      offset={[10, 10]}
       delay={[0, 700]}
       interactive
       hideOnClick={hideOnClick}
@@ -44,28 +51,21 @@ function PoperMenu({ children, items = [] , hideOnClick=false }, onChange=defaul
       render={(attrs) => (
         <div className={cx('content')} tabIndex="-1" {...attrs}>
           <PopperWrapper className={cx('menu-poper')}>
-            {history.length > 1 && <Header 
-                                      title={currentMenu.title} 
-                                      onBack={() => {
-                                        setHistory((prev)=> prev.slice(0,prev.length-1));
-                                      }} />}
-         <div className={cx('menu-body')}>
-          {renderItems()}
-         </div>
-            
+            {history.length > 1 && <Header title={currentMenu.title} onBack={handleBack} />}
+            <div className={cx('menu-body')}>{renderItems()}</div>
           </PopperWrapper>
         </div>
       )}
-      onHide={()=>setHistory(prev=> prev.slice(0,1))}
+      onHide={handleReset}
     >
       {children}
     </Tippy>
   );
-};
-PoperMenu.propTypes = {
-  children:PropTypes.node.isRequired,
-  items:PropTypes.array,
-  hideOnClick:PropTypes.bool,
-  onChange:PropTypes.func,
 }
+PoperMenu.propTypes = {
+  children: PropTypes.node.isRequired,
+  items: PropTypes.array,
+  hideOnClick: PropTypes.bool,
+  onChange: PropTypes.func,
+};
 export default PoperMenu;

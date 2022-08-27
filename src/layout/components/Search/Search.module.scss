@@ -25,6 +25,7 @@
       outline: none;
       background-color: transparent;
       padding: 12px 0;
+      padding-right: 40px;
       caret-color: var(--primary-color);
       font-family: var(--font-family);
     & input:not(:placeholder-shown)+.search-btn{
