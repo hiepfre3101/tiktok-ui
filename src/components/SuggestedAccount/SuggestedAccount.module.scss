@@ -1,0 +1,55 @@
+.wrapper{
+  padding: 16px 0;
+    border-top:1px solid rgba(22, 24, 35, 0.12);
+}
+.acc-item{
+  display: flex;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color ease-in-out 200ms ;
+  &:hover{
+    background-color: rgba(22, 24, 35, 0.03);
+  }
+}
+.label{
+    padding:0 8px;
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.75);
+}
+.avatar{
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.item-info{
+  flex: 1;
+  margin-left: 12px;
+}
+.nick-name{
+  font-size: 1.6rem;
+  color: rgba(22,24,35);
+  font-weight: 700;
+  line-height: 1;
+}
+.check{
+    color: #20d5ec;
+    font-size: 1.4rem;
+    margin-left: 4px;
+}
+.name{
+  font-size: 1.2rem;
+  color:rgba(22,24,35,0.75) ;
+}
+.more-btn{
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    padding: 8px;
+    font-weight: 600;
+    &:hover{
+        cursor: pointer;
+    }
+}

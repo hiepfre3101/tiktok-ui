@@ -2,8 +2,11 @@ import React from 'react'
 import styles from './Sidebar.module.scss';
 import classNames from 'classnames/bind';
 import config from '~/config';
+
+
 import Menu,{MenuItem} from './Menu';
-import {HomeIcon, UserGroupIcon , VideoIcon} from '~/components/Icons/Icon'
+import {HomeIcon, UserGroupIcon , VideoIcon} from '~/components/Icons/Icon';
+import  SuggestedAccount from '~/components/SuggestedAccount'
 
 const cx = classNames.bind(styles);
  function Sidebar() {
@@ -14,6 +17,8 @@ const cx = classNames.bind(styles);
            <MenuItem title='Following' icon={<UserGroupIcon/>} to={config.routes.following}/>
            <MenuItem title='Live' icon={<VideoIcon/>} to={config.routes.live}/>
        </Menu>
+       <SuggestedAccount label='Suggested Account'/>
+       <SuggestedAccount label='Following Account'/>
     </aside>
   )
 }
