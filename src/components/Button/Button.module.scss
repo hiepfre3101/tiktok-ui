@@ -36,7 +36,7 @@
 .primary{
     background-color: var(--primary-color);
     color: white;
-    justify-content: center;
+    justify-content: space-around;
     &:hover{
        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)),#FE2C55;
     }
@@ -55,7 +55,6 @@
     border: 1px solid rgba(22, 24, 35, 0.12);
     border-radius: 0px;
     &:hover{
-        text-decoration: underline;
        background-color:  rgba(22, 24, 35, 0.03);
     }
 }
@@ -70,7 +69,6 @@
 //Button children
 
 .title{
-    margin-left: 8px;
     display: inline-block;
     font-weight: 600;
 }
