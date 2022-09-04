@@ -66,6 +66,7 @@
        background-color:  rgba(22, 24, 35, 0.03);
     }
 }
+
 //Button children
 
 .title{
@@ -75,4 +76,24 @@
 .icon{
     height: 2rem;
     display: inline-block;
+    margin-right: 8px;
+}
+
+//Custom button 
+.login-btn{
+    color:  rgb(22, 24, 35);
+    font-size: 1.5rem;
+    padding: 0 12px ;
+    width:375px ;
+    height: 44px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    &:hover{
+           background-color: white;
+    }
+   + .login-btn{
+       margin-left: 0;
+    }
 }
