@@ -6,6 +6,7 @@ import { HeaderOnly } from '~/layout';
 import config from '~/config';
 import Search from '~/layout/components/Search/Search';
 import Live from '~/pages/Live';
+import { LoginPhoneOrEmail, LoginQr, LoginRegular } from '~/components/Modal/Login';
 //Public Routes
 const publicRoutes = [
   {
